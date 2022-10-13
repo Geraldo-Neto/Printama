@@ -34,12 +34,14 @@ public class Printama {
     public static final int ORIGINAL_WIDTH = 0;
     public static final int GET_PRINTER_CODE = 921;
 
-    private static final int MAX_CHAR = 32;
-    private static final int MAX_CHAR_WIDE = MAX_CHAR / 2;
 
     private static Printama printama;
     private final PrinterUtil util;
     private final BluetoothDevice printer;
+
+    private int printerCharSize = 32;
+
+    private int MAX_CHAR_WIDE = printerCharSize / 2;
 
     //----------------------------------------------------------------------------------------------
     // CONSTRUCTOR
@@ -386,7 +388,7 @@ public class Printama {
     private String getSpaces(String text1, String text2) {
         int text1Length = text1.length();
         int text2Length = text2.length();
-        int spacesCount = MAX_CHAR - text1Length - text2Length;
+        int spacesCount = printerCharSize - text1Length - text2Length;
         StringBuilder spaces = new StringBuilder();
         for (int i = 0; i < spacesCount; i++) {
             spaces.append(" ");
@@ -398,7 +400,7 @@ public class Printama {
         int text1Length = text1.length();
         int text2Length = text2.length();
         int text3Length = text3.length();
-        int spacesCount = (MAX_CHAR - text1Length - text2Length - text3Length) / 2;
+        int spacesCount = (printerCharSize - text1Length - text2Length - text3Length) / 2;
         StringBuilder spaces = new StringBuilder();
         for (int i = 0; i < spacesCount; i++) {
             spaces.append(" ");
@@ -411,7 +413,7 @@ public class Printama {
         int text2Length = text2.length();
         int text3Length = text3.length();
         int text4Length = text4.length();
-        int spacesCount = (MAX_CHAR - text1Length - text2Length - text3Length - text4Length) / 3;
+        int spacesCount = (printerCharSize - text1Length - text2Length - text3Length - text4Length) / 3;
         StringBuilder spaces = new StringBuilder();
         for (int i = 0; i < spacesCount; i++) {
             spaces.append(" ");
@@ -879,6 +881,14 @@ public class Printama {
 
     public void setWideTallBold() {
         util.setWideTallBold();
+    }
+
+    public int getPrinterCharSize() {
+        return printerCharSize;
+    }
+
+    public void setPrinterCharSize(int printerCharSize) {
+        this.printerCharSize = printerCharSize;
     }
 
     //----------------------------------------------------------------------------------------------
