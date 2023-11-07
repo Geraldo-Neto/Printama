@@ -186,6 +186,10 @@ public class Printama {
         util.feedPaper();
     }
 
+    public void feedPaperAndCut() {
+        util.printEndPaper();
+    }
+
 
     public void printDashedLine() {
         util.setAlign(LEFT);
