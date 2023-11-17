@@ -295,8 +295,8 @@ public class Printama {
     // PRINT TEXT
     //----------------------------------------------------------------------------------------------
 
-    public void printText(String text) {
-        printText(text, LEFT);
+    public boolean printText(String text) {
+        return printText(text, LEFT);
     }
 
     /**
@@ -309,9 +309,9 @@ public class Printama {
         util.printText(text);
     }
 
-    public void printText(String text, int align) {
+    public boolean printText(String text, int align) {
         util.setAlign(align);
-        util.printText(text);
+        return util.printText(text);
     }
 
     /**
@@ -324,48 +324,48 @@ public class Printama {
         printTextln(text);
     }
 
-    public void printTextln(String text, int align) {
+    public boolean printTextln(String text, int align) {
         util.setAlign(align);
-        printTextln(text);
+        return printTextln(text);
     }
 
-    public void printTextln(String text) {
+    public boolean printTextln(String text) {
         text = text + "\n";
-        util.printText(text);
+        return util.printText(text);
     }
 
     //----------------------------------------------------------------------------------------------
     // PRINT TEXT JUSTIFY ALIGNMENT
     //----------------------------------------------------------------------------------------------
 
-    public void printTextJustify(String text1, String text2) {
+    public boolean printTextJustify(String text1, String text2) {
         String justifiedText = getJustifiedText(text1, text2);
-        printText(justifiedText);
+        return printText(justifiedText);
     }
 
-    public void printTextJustify(String text1, String text2, String text3) {
+    public boolean printTextJustify(String text1, String text2, String text3) {
         String justifiedText = getJustifiedText(text1, text2, text3);
-        printText(justifiedText);
+        return printText(justifiedText);
     }
 
-    public void printTextJustify(String text1, String text2, String text3, String text4) {
+    public boolean printTextJustify(String text1, String text2, String text3, String text4) {
         String justifiedText = getJustifiedText(text1, text2, text3, text4);
-        printText(justifiedText);
+        return printText(justifiedText);
     }
 
-    public void printTextJustifyBold(String text1, String text2) {
+    public boolean printTextJustifyBold(String text1, String text2) {
         String justifiedText = getJustifiedText(text1, text2);
-        printTextBold(justifiedText);
+        return printTextBold(justifiedText);
     }
 
-    public void printTextJustifyBold(String text1, String text2, String text3) {
+    public boolean printTextJustifyBold(String text1, String text2, String text3) {
         String justifiedText = getJustifiedText(text1, text2, text3);
-        printTextBold(justifiedText);
+        return printTextBold(justifiedText);
     }
 
-    public void printTextJustifyBold(String text1, String text2, String text3, String text4) {
+    public boolean printTextJustifyBold(String text1, String text2, String text3, String text4) {
         String justifiedText = getJustifiedText(text1, text2, text3, text4);
-        printTextBold(justifiedText);
+        return printTextBold(justifiedText);
     }
 
     private String getJustifiedText(String text1, String text2) {
@@ -430,9 +430,9 @@ public class Printama {
     //----------------------------------------------------------------------------------------------
 
     // Normal
-    public void printTextNormal(String text) {
+    public boolean printTextNormal(String text) {
         setNormalText();
-        printText(text, LEFT);
+        return printText(text, LEFT);
     }
 
     /**
@@ -446,10 +446,10 @@ public class Printama {
         util.printText(text);
     }
 
-    public void printTextNormal(String text, int align) {
+    public boolean printTextNormal(String text, int align) {
         setNormalText();
         util.setAlign(align);
-        util.printText(text);
+        return util.printText(text);
     }
 
     /**
@@ -463,23 +463,24 @@ public class Printama {
         printTextln(text);
     }
 
-    public void printTextlnNormal(String text, int align) {
+    public boolean printTextlnNormal(String text, int align) {
         setNormalText();
         util.setAlign(align);
-        printTextln(text);
+        return printTextln(text);
     }
 
-    public void printTextlnNormal(String text) {
+    public boolean printTextlnNormal(String text) {
         setNormalText();
         text = text + "\n";
-        util.printText(text);
+        return util.printText(text);
     }
 
     // Bold
-    public void printTextBold(String text) {
+    public boolean printTextBold(String text) {
         setBold();
-        printText(text, LEFT);
+        boolean success = printText(text, LEFT);
         setNormalText();
+        return success;
     }
 
     /**
@@ -494,11 +495,12 @@ public class Printama {
         setNormalText();
     }
 
-    public void printTextBold(String text, int align) {
+    public boolean printTextBold(String text, int align) {
         setBold();
         util.setAlign(align);
-        util.printText(text);
+        boolean success = util.printText(text);
         setNormalText();
+        return success;
     }
 
     /**
@@ -513,18 +515,20 @@ public class Printama {
         setNormalText();
     }
 
-    public void printTextlnBold(String text, int align) {
+    public boolean printTextlnBold(String text, int align) {
         setBold();
         util.setAlign(align);
-        printTextln(text);
+        boolean success = printTextln(text);
         setNormalText();
+        return success;
     }
 
-    public void printTextlnBold(String text) {
+    public boolean printTextlnBold(String text) {
         setBold();
         text = text + "\n";
-        util.printText(text);
+        boolean success = util.printText(text);
         setNormalText();
+        return success;
     }
 
     // Tall
